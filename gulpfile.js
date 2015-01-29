@@ -36,7 +36,7 @@ gulp.task('serve', function() {
   });
     
   gulp.watch(['*.html','scripts/**/*.js'], {cwd: 'app'}, reload);
-  gulp.watch('app/scss/*.scss',['sass']);
+  gulp.watch('app/scss/**/*.scss',['sass']);
 });
 
 
