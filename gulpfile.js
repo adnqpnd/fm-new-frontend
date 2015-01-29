@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-sass = require('gulp-ruby-sass'),
+sass = require('gulp-sass'),
 browserSync = require('browser-sync'),
 minifycss = require('gulp-minify-css'),
 rename = require('gulp-rename'),
@@ -15,10 +15,8 @@ cssBuildDir = 'build/css'
 //compile sass to css
 gulp.task('sass', function() {
   console.log('enter sass');
-  return sass(scssDir + 'main.scss',{style: 'expanded'})
-  .on('error', function(err) {
-  	console.error('Error',err.message);
-  })
+  gulp.src(scssDir + 'main.scss')
+  .pipe(sass())
   .pipe(gulp.dest(stylesDir))
   .pipe(reload({stream:true}))
   .pipe(rename({suffix: '.min'}))
@@ -34,13 +32,7 @@ gulp.task('serve', function() {
       baseDir: 'app'
     }
   });
-    
+
   gulp.watch(['*.html','scripts/**/*.js'], {cwd: 'app'}, reload);
   gulp.watch('app/scss/**/*.scss',['sass']);
 });
-
-
-
-
-
-
