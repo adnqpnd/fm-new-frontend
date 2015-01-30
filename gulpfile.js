@@ -33,6 +33,6 @@ gulp.task('serve', function() {
     }
   });
 
-  gulp.watch(['*.html','scripts/**/*.js'], {cwd: 'app'}, reload);
+  gulp.watch(['*.html','templates/**/*.html','scripts/**/*.js'], {cwd: 'app'}, reload);
   gulp.watch('app/scss/**/*.scss',['sass']);
 });
