@@ -37,3 +37,60 @@
 .ripple.ripple-out {
   transition: opacity 0.1s linear 0s !important;
   opacity: 0; }
+
+.well.bs-component {
+  margin-top: 50px; }
+  .well.bs-component img {
+    margin: auto;
+    padding-bottom: 15px; }
+
+.forminput {
+  margin: 25px 30px 0 30px; }
+
+.variantTable {
+  margin-top: 50px; }
+
+.row.selectcompany {
+  width: 250px; }
+
+body {
+  background-color: #202020 !important; }
+
+h1 {
+  color: #00bbd3; }
+
+.jumbotron {
+  margin: 20px; }
+
+.panel-left {
+  margin-right: 10px;
+  width: 400px; }
+
+.panel-right {
+  width: 730px; }
+
+.container {
+  background-color: #ecf0f1;
+  margin-top: -20px !important; }
+
+.navbar-hello {
+  background-color: #202020 !important; }
+
+.navbar-header {
+  background-color: #202020 !important; }
+
+.small-margin {
+  background-image: url("http://i57.tinypic.com/107ji3k.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 130px;
+  background-position: top center;
+  background-color: #202020 !important; }
+
+.big-margin {
+  margin-top: -20px;
+  background-color: #202020 !important;
+  border-bottom: 5px solid #fec006; }
+
+.hello {
+  background-image: url("http://i58.tinypic.com/s67ng5.png"); }
