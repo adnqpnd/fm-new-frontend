@@ -3,7 +3,14 @@
 angular.module('fmApp', ['ui.router'] )
 
 .constant('serviceHost','http://localhost:1337')
-.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+.constant('accessLevels', {
+  'visitor': 0,
+  'admin': 1,
+  'encoder': 2,
+  'cashier': 3,
+  'checker': 4
+})
+.config(['$urlRouterProvider', '$stateProvider','accessLevels', function ($urlRouterProvider, $stateProvider, accessLevels) {
 
   $urlRouterProvider.otherwise('/');
 
@@ -11,13 +18,19 @@ angular.module('fmApp', ['ui.router'] )
     .state('login', {
       url:'/',
       templateUrl: 'templates/main/login.html',
-      controller: 'LoginCtrl'
+      controller: 'LoginCtrl',
+      data: {
+        access: accessLevels.visitor
+      }
     })
 
     .state('admin', {
       url:'/admin',
       abstract: true,
-      templateUrl: 'templates/main/admin.html'
+      templateUrl: 'templates/main/admin.html',
+      data: {
+        access: accessLevels.admin
+      }
     })
       .state('admin.accounts', {
         url:'/accounts',
@@ -72,7 +85,10 @@ angular.module('fmApp', ['ui.router'] )
     .state('encoder', {
       url:'/encoder',
       abstract: true,
-      templateUrl: 'templates/main/encoder.html'
+      templateUrl: 'templates/main/encoder.html',
+      data: {
+        access: accessLevels.encoder
+      }
     })
       .state('encoder.add-delivery', {
         url:'/sales/add-delivery',
@@ -94,7 +110,10 @@ angular.module('fmApp', ['ui.router'] )
     .state('cashier', {
       url:'/cashier',
       abstract: true,
-      templateUrl: 'templates/main/cashier.html'
+      templateUrl: 'templates/main/cashier.html',
+      data: {
+        access: accessLevels.cashier
+      }
     })
       .state('cashier.pos', {
         url:'/pos',
@@ -109,7 +128,10 @@ angular.module('fmApp', ['ui.router'] )
     .state('checker', {
       url:'/checker',
       abstract: true,
-      templateUrl: 'templates/main/checker.html'
+      templateUrl: 'templates/main/checker.html',
+      data: {
+        access: accessLevels.checker
+      }
     })
       .state('checker.tally', {
         url:'/tally',
@@ -129,6 +151,41 @@ angular.module('fmApp', ['ui.router'] )
       })
 
 }])	
+
+.run(['$rootScope','$state','userService', function ($rootScope, $state, userService) {
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+     console.log("state change");
+     console.log(userService.getAccessLevel());
+     console.log(toState.data.access);
+      if (!(userService.getAccessLevel() === toState.data.access)) {
+        event.preventDefault();
+
+        switch (userService.getAccessLevel()) {
+          case 1:
+            userService.setAccessLevel(0);
+            $state.go('admin.dssr');
+            break;
+          case 2:
+            userService.setAccessLevel(0);
+            $state.go('encoder.add-delivery');
+            break;
+          case 3:
+            userService.setAccessLevel(0);
+            $state.go('cashier.pos');
+            break;
+          case 4:
+            userService.setAccessLevel(0);
+            $state.go('checker.tally');
+            break;
+          default:
+            userService.setAccessLevel(0);
+            $state.go('login');
+        }
+
+      }
+    });
+
+}])
 
 .controller('MainCtrl',['$scope', 'authService', '$http','serviceHost','$state', function($scope, authService,$http,serviceHost,$state){
   $scope.logout = function () {

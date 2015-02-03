@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fmApp')
-.controller('LoginCtrl',['$scope', 'authService', '$state', '$window', function($scope, authService, $state, $window){
+.controller('LoginCtrl',['$scope', 'authService', '$state', 'userService', function($scope, authService, $state, userService){
 	$scope.error = "";
 	$scope.showError = false;
     
@@ -19,30 +19,30 @@ angular.module('fmApp')
         var status = data.status;
 
         if(status.code === 1) {
-          var userInfo = data.userinfo;
+          var userInfo = data.userinfo
+          userService.setUser(userInfo);
           authService.setToken(data.token);
-          var token = authService.getToken();
-          
+
           switch(userInfo.type) {
             case 'admin':
               $state.go('admin.dssr');
               break;
             case 'encoder':
-              $state.go('encoder');
+              $state.go('encoder.add-delivery');
               break;
             case 'cashier':
-              $state.go('cashier');
+              $state.go('cashier.pos');
               break;
             case 'checker':
-              $state.go('checker');
+              $state.go('checker.tally');
           }
         }else{
           $scope.error = status.message;
-	      $scope.showError = true;
+	        $scope.showError = true;
         }
 
 	  }).error(function (error) {
-        $log.error("Error login :" + error);
+        console.log("Error login :" + error);
 	  })
 
 	}
