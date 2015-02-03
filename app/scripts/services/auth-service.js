@@ -16,7 +16,8 @@ angular.module('fmApp')
       },
       logout: function () {
       	$window.localStorage.removeItem('auth_token');
-        userService.setAccessLevel(0);
+        $window.localStorage.removeItem('ui');
+        userService.removeAccessLevel();
       }
 
     }

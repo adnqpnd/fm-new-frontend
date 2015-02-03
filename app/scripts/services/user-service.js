@@ -3,13 +3,21 @@
 angular.module('fmApp')
 
 .factory('userService',['$http', '$window', '$log', function ($http, $window, $log) {
-	var user = {};
 	var userAccess = 0;
 
 	return {
 	  setUser : function (userInfo) {
-	  	user = userInfo;
-	  	switch (user.type) {
+      $window.localStorage.setItem('ui',JSON.stringify(userInfo));
+      this.setAccessLevel(userInfo);
+	  	$log.debug(userAccess);
+	  },
+
+	  getUser : function () {
+	  	return $window.localStorage.getItem('ui');
+	  },
+      
+    setAccessLevel: function (userInfo) {
+      switch (userInfo.type) {
           case 'admin':
              userAccess = 1;
              break;
@@ -24,22 +32,17 @@ angular.module('fmApp')
              break;
           default :
              userAccess = 0;
-	  	}
-	  	$log.debug(userAccess);
-	  },
-
-	  getUser : function () {
-	  	return user;
-	  },
-      
-      setAccessLevel: function (accessLevel) {
-        userAccess = accessLevel;
-        $log.debug(userAccess);
-      },
+      }
+      $log.debug(userAccess);
+    },
 
 	  getAccessLevel: function () {
 	  	return userAccess;
-	  }
+	  },
+
+    removeAccessLevel: function () {
+      userAccess = 0;
+    }
 	}
 }]);
   
