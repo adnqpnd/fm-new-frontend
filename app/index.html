@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="fmApp">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -7,21 +7,30 @@
 	<link rel="stylesheet" href="styles/vendors/material.css">
 	<link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
-	<a href="javascript:void(0)" class="btn btn-primary">Primary</a>
+<body ng-controller="MainCtrl">
 
+	<ui-view></ui-view>
+ 
 	<!-- Vendor's js-->
 	<script src="scripts/vendors/jquery.min.js"></script>
 	<script src="scripts/vendors/bootstrap.min.js"></script>
 	<script src="scripts/vendors/ripples.min.js"></script>
+	<script src="scripts/vendors/arrive.min.js"></script>
 	<script src="scripts/vendors/material.min.js"></script>
 
-	<!-- Initialize Material.js -->
 	<script>
       $.material.init();
     </script>
 
-  <script src="scripts/vendors/angular.min.js"></script>
-	<script src="scripts/app.js"></script>
+   <script src="scripts/vendors/angular.min.js"></script>
+   <script src="scripts/vendors/angular-ui-router.min.js"></script>
+
+   <script src="scripts/app.js"></script>
+
+   <script src="scripts/controllers/login-controller.js"></script>
+
+   <script src="scripts/services/auth-service.js"></script>
+   <script src="scripts/services/user-service.js"></script>
+
 </body>
 </html>
