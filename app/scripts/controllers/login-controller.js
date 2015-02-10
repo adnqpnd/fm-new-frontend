@@ -6,6 +6,7 @@ angular.module('fmApp')
 	$scope.showError = false;
     
     $scope.closeError = function (option) {
+
       $scope.showError = option;
     }
 

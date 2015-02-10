@@ -27,7 +27,7 @@ angular.module('fmApp', ['ui.router'] )
     .state('admin', {
       url:'/admin',
       abstract: true,
-      templateUrl: 'templates/main/admin.html',
+      templateUrl: 'templates/main.html',
       data: {
         access: accessLevels.admin
       }
@@ -40,11 +40,11 @@ angular.module('fmApp', ['ui.router'] )
           }
         }  
       })
-      .state('admin.delivery-overview', {
-        url:'/sales/delivery-overview',
+      .state('admin.purchase-overview', {
+        url:'/sales/purchase-overview',
         views: {
           'adminContent': {
-            templateUrl: 'templates/delivery-overview.html'
+            templateUrl: 'templates/purchase-overview.html'
           }
         }  
       })
@@ -72,11 +72,11 @@ angular.module('fmApp', ['ui.router'] )
           }
         }  
       })
-      .state('admin.variants', {
-        url:'/inventory/variants',
+      .state('admin.sku', {
+        url:'/inventory/sku',
         views: {
           'adminContent': {
-            templateUrl: 'templates/variants.html'
+            templateUrl: 'templates/sku.html'
           }
         }  
       })

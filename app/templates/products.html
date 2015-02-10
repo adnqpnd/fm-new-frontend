@@ -1,1 +1,187 @@
-<div>Products</div>
+
+<!-- START OF CONTENT -->
+
+
+<!-- PAGE HEADERS -->
+
+<div class="row">
+
+    <div class="pageheader-left">
+        <h1> Products </h1>
+    </div>
+
+    <div class="pageheader-right" align="center">
+            <span class="label label-default">DATE:</span>
+            <span class="label label-default">FEBRUARY. 09, 2015</span>
+            <span class="label label-default"><a href="">▼</a></span>
+            <br>
+
+            <form class="navbar-form navbar-left">
+                <input type="text" class="form-control" placeholder="Search by:">
+            </form>
+    </div>
+
+</div>
+
+
+
+<!-- BODY -->
+
+<!-- DO NOT REMOVE-->
+<div class="container">
+
+
+<!-- PANEL LEFT-->
+
+<div class="panel panel-left col-md-3">
+    <div class="panel-body">
+        
+        <form class="form-horizontal">
+            <fieldset>
+
+                <legend>Add New Product</legend>
+
+                 <div class="form-group">
+                    <label for="inputProductname" class="col-md-2 control-label">Product Name</label>
+                    <div class="col-md-10">
+                        <div class="form-control-wrapper">
+                            <input type="text" class="form-control empty" id="inputProductname" placeholder="Enter product name.">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">
+                    <label for="inputBrand" class="col-md-2 control-label">Company Name</label>
+                    <div class="col-md-10">
+                        <div class="form-control-wrapper">
+                            <input type="text" class="form-control empty" id="inputBrand" placeholder="Enter the company.">
+                            <span class="material-input"></span>
+                        </div>
+                    </div>
+                </div>-->
+
+                        <div class="form-group">
+            <label for="select" class="col-md-2 control-label">Company Name</label>
+            <div class="col-md-10">
+                <select class="form-control" id="select">
+                    <option>Coca-Cola</option>
+                    <option>San Miguel Beer (SMB) </option>
+                    <option>Wushu Lu (WL) </option>
+                    <option>Add New Company...</option>
+                </select>
+            </div>
+        </div>
+
+                <div class="form-group rightalign">
+                    <br>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button class="btn btn-default">Cancel</button>
+                </div>
+
+            </fieldset>
+        </form>
+
+    <!-- END OF TABLE -->
+
+
+
+
+</div>
+</div> <!-- END OF WHITE PANEL | DON'T REMOVE! -->
+
+
+<!-- PANEL RIGHT-->
+
+
+    <div class="panel panel-right col-md-8">
+        <div class="panel-body">
+
+        <!-- START OF TABLE -->
+
+        <table class="table table-striped table-hover ">
+
+                <thead>
+                    <tr class="labels">
+                        <th>Product</th><!--Establishment Name-->
+                        <th>Supplier</th><!--Owner Name-->
+                        <th></th> 
+                    </tr>
+                </thead>
+
+                <tbody>
+
+          <tr>
+
+            <td>Mogu mogu</td>
+            <td>SMB</td>
+
+            <!-- START OF EDIT BUTTON -->
+            <td>
+
+            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#edit" href="">Edit</button>
+
+            
+            </td>
+            <!-- END OF EDIT BUTTON -->
+
+          </tr>
+          <tr>
+
+            <td>Mogu mogu</td>
+            <td>SMB</td>
+
+            <!-- START OF EDIT BUTTON -->
+            <td>
+        
+            </td>
+            <!-- END OF EDIT BUTTON -->
+
+            <tr>
+            <td>Mogu mogu</td>
+            <td>SMB</td>
+            <td></td>
+
+        
+            <tr>
+            <td>Sprite</td>
+            <td>Coca-Cola</td>
+
+          
+            <td></td>
+            
+            <tr>
+            <td>Coke</td>
+            <td>Coca-Cola</td>
+
+            <td></td>
+        
+
+            </tbody>
+        </table>
+
+
+    <!-- Add product button 
+        //yung magshoshow ng right panel --> 
+    <div class="icon-preview">
+      <a class="btn btn-primary pull-right btn-md" data-toggle="modal" data-target="#addBoModal">Add</a>
+      <br>
+    </div>
+
+
+    <br><br>
+
+        <!-- PRINT ICON -->
+        <a class="icon-preview"><a class="btn btn-primary pull-right btn-md"><i class="mdi-action-print"></i></a>
+
+
+
+    </div> 
+</div>
+
+<!-- END OF LEFT PANEL -->
+
+
+
+
+</div> <!-- END OF CONTAINER   | DON'T REMOVE! -->
