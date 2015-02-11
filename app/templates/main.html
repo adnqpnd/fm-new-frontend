@@ -52,13 +52,13 @@
                 <ul class="dropdown-menu">
                     <!-- <li class="divider"></li> DIVIDER-->
                     <li class="dropdown-header">Encoder</li>
-                    <li><a href="/templates/purchases.html">Add Delivery</a></li>
-                    <li><a href="/templates/purchases.html">Purchases</a></li>
+                    <li><a ui-sref="encoder.add-delivery">Add Delivery</a></li>
+                    <li><a ui-sref="encoder.purchases">Purchases</a></li>
                     <li class="dropdown-header">Checker</li>
-                    <li><a href="/templates/purchases.html">Tally</a></li>
-                    <li><a href="/templates/purchases.html">Bad Orders</a></li>
+                    <li><a ui-sref="checker.tally">Tally</a></li>
+                    <li><a ui-sref="checker.bad-order">Bad Orders</a></li>
                     <li class="dropdown-header">Cashier</li>
-                    <li><a href="/templates/purchases.html">POS</a></li>
+                    <li><a ui-sref="cashier.pos">POS</a></li>
                 </ul>
             </li>
 
@@ -81,7 +81,7 @@
 
 <!-- START OF CONTENT -->
 
-<div ui-view="adminContent"></udiv>
+<div ui-view="mainContent"></udiv>
 
 <!-- START OF FOOTER  -->
 

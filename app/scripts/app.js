@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fmApp', ['ui.router'] )
+angular.module('fmApp', ['ui.router','sails.io'] )
 
 .constant('serviceHost','http://localhost:1337')
 .constant('accessLevels', {
@@ -17,7 +17,7 @@ angular.module('fmApp', ['ui.router'] )
   $stateProvider
     .state('login', {
       url:'/',
-      templateUrl: 'templates/main/login.html',
+      templateUrl: 'templates/login.html',
       controller: 'LoginCtrl',
       data: {
         access: accessLevels.visitor
@@ -35,7 +35,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.accounts', {
         url:'/accounts',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/accounts.html'
           }
         }  
@@ -43,7 +43,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.purchase-overview', {
         url:'/sales/purchase-overview',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/purchase-overview.html'
           }
         }  
@@ -51,7 +51,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.dssr', {
         url:'/sales/dssr',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/dssr.html'
           }
         }  
@@ -59,7 +59,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.inventory', {
         url:'/inventory',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/inventory.html'
           }
         }  
@@ -67,7 +67,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.products', {
         url:'/inventory/products',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/products.html'
           }
         }  
@@ -75,7 +75,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('admin.sku', {
         url:'/inventory/sku',
         views: {
-          'adminContent': {
+          'mainContent': {
             templateUrl: 'templates/sku.html'
           }
         }  
@@ -85,7 +85,7 @@ angular.module('fmApp', ['ui.router'] )
     .state('encoder', {
       url:'/encoder',
       abstract: true,
-      templateUrl: 'templates/main/encoder.html',
+      templateUrl: 'templates/main.html',
       data: {
         access: accessLevels.encoder
       }
@@ -93,16 +93,16 @@ angular.module('fmApp', ['ui.router'] )
       .state('encoder.add-delivery', {
         url:'/sales/add-delivery',
         views: {
-          'encoderContent': {
+          'mainContent': {
             templateUrl: 'templates/add-delivery.html'
           }
         }  
       })
-      .state('encoder.inventory', {
+      .state('encoder.purchases', {
         url:'/inventory',
         views: {
-          'encoderContent': {
-            templateUrl: 'templates/replenish-inventory.html'
+          'mainContent': {
+            templateUrl: 'templates/purchases.html'
           }
         }  
       })
@@ -110,7 +110,7 @@ angular.module('fmApp', ['ui.router'] )
     .state('cashier', {
       url:'/cashier',
       abstract: true,
-      templateUrl: 'templates/main/cashier.html',
+      templateUrl: 'templates/main.html',
       data: {
         access: accessLevels.cashier
       }
@@ -118,7 +118,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('cashier.pos', {
         url:'/pos',
         views: {
-          'cashierContent': {
+          'mainContent': {
             templateUrl: 'templates/pos.html'
           }
         }  
@@ -128,7 +128,7 @@ angular.module('fmApp', ['ui.router'] )
     .state('checker', {
       url:'/checker',
       abstract: true,
-      templateUrl: 'templates/main/checker.html',
+      templateUrl: 'templates/main.html',
       data: {
         access: accessLevels.checker
       }
@@ -136,7 +136,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('checker.tally', {
         url:'/tally',
         views: {
-          'checkerContent': {
+          'mainContent': {
             templateUrl: 'templates/tally.html'
           }
         }  
@@ -144,7 +144,7 @@ angular.module('fmApp', ['ui.router'] )
       .state('checker.bad-order', {
         url:'/bad-order',
         views: {
-          'checkerContent': {
+          'mainContent': {
             templateUrl: 'templates/bad-order.html'
           }
         }  
